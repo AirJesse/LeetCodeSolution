@@ -11,6 +11,8 @@ public class Solution {
         for (int i = 0; i < collect.size(); i++) {
             scoreToOrderMap.put(collect.get(i), i);
         }
+        System.out.println("asdad");
+
         String[] result = new String[score.length];
         for (int i = 0; i < score.length; i++) {
             Integer order = scoreToOrderMap.get(score[i]);
