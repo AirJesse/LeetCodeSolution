@@ -1,7 +1,6 @@
 package solutions.q1996_游戏中弱角色的数量;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+
 
 import java.util.Arrays;
 import java.util.Collections;
