@@ -2,6 +2,7 @@ package 算法入门.双指针;
 
 import Utils.ArrayUtil;
 
+import java.nio.charset.Charset;
 import java.util.Arrays;
 
 public class Solution {
@@ -41,6 +42,25 @@ public class Solution {
             start += 1;
             end -= 1;
         }
+    }
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length-1;
+        while (left<right){
+            char tmp = s[left];
+            s[left++] = s[right];
+            s[right--] = tmp;
+        }
+    }
+
+    public String reverseWords(String s) {
+        String[] s1 = s.split(" ");
+        for (int i = 0;i<s1.length;i++) {
+            char[] chars = s1[i].toCharArray();
+            reverseString(chars);
+            s1[i] = String.valueOf(chars);
+        }
+        return String.join(" ", s1);
     }
 
 
