@@ -1,8 +1,6 @@
 package solutions.q19_删除链表的倒数第N个节点;
 
 import common.ListNode;
-import sun.awt.geom.AreaOp;
-
 public class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
         ListNode p1 = head;

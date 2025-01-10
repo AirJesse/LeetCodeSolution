@@ -1,7 +1,5 @@
 package solutions.q1797_设计一个验证系统;
 
-import javafx.util.Pair;
-
 import java.util.HashMap;
 import java.util.Map;
 
