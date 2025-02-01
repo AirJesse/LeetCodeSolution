@@ -1,8 +1,6 @@
 package leetCode_75.q649_Dota2参议院;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Solution {
     /*
@@ -42,25 +40,43 @@ public class Solution {
     }
 
     public String predictPartyVictory2(String senate) {
-        Queue<Integer> dq = new LinkedList<>();
-        Queue<Integer> rq = new LinkedList<>();
+        List<String> list = new ArrayList<>(senate.length());
+        int rNum = 0;
+        int dNum = 0;
         for (int i = 0; i < senate.length(); i++) {
             if (senate.charAt(i) == 'R') {
-                rq.offer(i);
+                rNum++;
+                list.add("Radiant");
             } else {
-                dq.offer(i);
+                dNum++;
+                list.add("Dire");
             }
         }
-        String index = null;
-        while (dq.size() != 0 && rq.size() != 0) {
-            index = dq.peek() < rq.peek() ? "Dire" : "Radiant";
-            if (index.equals("Radiant")) {
-                dq.poll();
-            } else {
-                rq.poll();
+        //正记R,负记D
+        int balance = 0;
+        while (rNum > 0 && dNum > 0) {
+            for (int i = 0; i < list.size(); i++) {
+                if (Objects.equals(list.get(i), "Radiant")) {
+                    if (balance < 0) {
+                        rNum--;
+                        list.set(i, null);
+                    }
+                    balance++;
+                } else if (Objects.equals(list.get(i), "Dire")) {
+                    if (balance > 0) {
+                        dNum--;
+                        list.set(i, null);
+                    }
+                    balance--;
+                }
             }
+        }
+        return dNum == 0 ? "Radiant" : "Dire";
 
-        }
-        return index;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Solution().predictPartyVictory2("DRRDRDRDRDDRDRDR"));
     }
 }
