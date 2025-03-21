@@ -18,6 +18,24 @@ public class Solution {
         return pick;
     }
 
+    public int guessNumber2(int n) {
+        int left = 1;
+        int right = n;
+
+        long pick =  (long) (left + right) / 2;
+        while (true) {
+            int result = guess((int) pick);
+            if (result == 0) return (int) pick;
+            if (result == 1) {
+                left = (int) pick;
+                pick = (pick + right + 1) / 2;
+            } else {
+                right = (int) pick;
+                pick = (pick + left - 1) / 2;
+            }
+        }
+    }
+
 
     private int guess(int pick) {
         if (pick == 6) {
